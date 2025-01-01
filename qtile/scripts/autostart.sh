@@ -6,7 +6,7 @@ COLORSCHEME=DoomOne
 ### AUTOSTART PROGRAMS ###
 # lxsession &
 picom --daemon &
-#/usr/bin/emacs --daemon &
+/usr/bin/emacs --daemon &
 #nm-applet &
 #"$HOME"/.screenlayout/layout.sh &
 #sleep 1
@@ -41,19 +41,20 @@ function run {
 #xrandr --output LVDS1 --mode 1366x768 --output DP3 --mode 1920x1080 --right-of LVDS1
 #xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 #autorandr horizontal
-xrandr --output HDMI-2 --mode 1366x768 --right-of eDP-1
-xrandr --output HDMI-2 --mode 1920x1080 --right-of eDP-1
+#xrandr --output HDMI-2 --mode 1366x768 --right-of eDP-1
+#xrandr --output HDMI-2 --mode 1920x1080 --above eDP-1
 
 
 ##changed via give-me-azerty-qtile
 #setxkbmap be
 
 #autostart ArcoLinux Welcome App
-run dex $HOME/.config/autostart/arcolinux-welcome-app.desktop &
+#run dex $HOME/.config/autostart/arcolinux-welcome-app.desktop &
 
 #Some ways to set your wallpaper besides variety or nitrogen
-feh --bg-fill /home/fafa/Pictures/Wallpapers/att-05.jpg &
+#feh --bg-fill /home/fafa/Pictures/Wallpapers/att-05.jpg &
 #feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+feh --bg-fill /home/fafa/Documents/wallpapers/0002.jpg &
 #wallpaper for other Arch based systems
 #feh --bg-fill /usr/share/archlinux-tweak-tool/data/wallpaper/wallpaper.png &
 
@@ -61,7 +62,7 @@ feh --bg-fill /home/fafa/Pictures/Wallpapers/att-05.jpg &
 run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
 
 #starting utility applications at boot time
-run variety &
+#run variety &
 run nm-applet &
 #run pamac-tray &
 run xfce4-power-manager &
@@ -73,7 +74,7 @@ blueberry-tray &
 #starting user applications at boot time
 #run volumeicon &
 #run discord &
-run onedrivegui &
+run OneDriveGUI &
 #nitrogen --restore &
 #run caffeine -a &
 #run vivaldi-stable &

@@ -109,7 +109,7 @@ def maximize_by_switching_layout(qtile):
 
 keys = [
     # The essentials
-    #Key([mod], "Return", lazy.spawn(myTerm), desc="Terminal"),
+    Key([mod], "Return", lazy.spawn(myTerm), desc="Terminal"),
     #Key([mod, "shift"], "Return", lazy.spawn("rofi -show drun"), desc='Run Launcher'),
     Key([mod], "b", lazy.spawn(myBrowser), desc='Web browser'),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -230,13 +230,13 @@ keys = [
 ]
 
 groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
-group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9",]
+group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 #group_labels = ["DEV", "WWW", "SYS", "DOC", "VBOX", "CHAT", "MUS", "VID", "GFX",]
 #group_labels = ["", "", "", "", "", "", "", "", "",]
 
-group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
+group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
 for i in range(len(group_names)):
     groups.append(
@@ -330,7 +330,7 @@ extension_defaults = widget_defaults.copy()
 def init_widgets_list():
     widgets_list = [
         widget.Image(
-                 filename = "~/.config/qtile/icons/logo.png",
+                 filename = "~/.config/qtile/icons/archlinux_logo.png",
                  scale = "False",
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)},
                  ),
@@ -398,7 +398,7 @@ def init_widgets_list():
                  ),
         widget.Spacer(length = 8),
         widget.CPU(
-                 format = '▓  Cpu: {load_percent}%',
+                 format = '▓  {load_percent}%',
                  foreground = colors[4],
                  decorations=[
                      BorderDecoration(
@@ -409,27 +409,10 @@ def init_widgets_list():
                  ),
         widget.Spacer(length = 8),
         widget.Memory(
-                 foreground = colors[8],
+                 foreground = colors[5],
                  mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
                  format = '{MemUsed: .0f}{mm}',
-                 fmt = '🖥  Mem: {} used',
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[8],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
-                 ),
-        widget.Spacer(length = 8),
-        widget.DF(
-                 update_interval = 60,
-                 foreground = colors[5],
-                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e df')},
-                 partition = '/',
-                 #format = '[{p}] {uf}{m} ({r:.0f}%)',
-                 format = '{uf}{m} free',
-                 fmt = '🖴  Disk: {}',
-                 visible_on_warn = False,
+                 fmt = '🖥  {} used',
                  decorations=[
                      BorderDecoration(
                          colour = colors[5],
@@ -438,9 +421,26 @@ def init_widgets_list():
                  ],
                  ),
         widget.Spacer(length = 8),
+        widget.DF(
+                 update_interval = 60,
+                 foreground = colors[6],
+                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e df')},
+                 partition = '/',
+                 #format = '[{p}] {uf}{m} ({r:.0f}%)',
+                 format = '{uf}{m} free',
+                 fmt = '🖴  {}',
+                 visible_on_warn = False,
+                 decorations=[
+                     BorderDecoration(
+                         colour = colors[6],
+                         border_width = [0, 0, 2, 0],
+                     )
+                 ],
+                 ),
+        widget.Spacer(length = 8),
         widget.Volume(
                  foreground = colors[7],
-                 fmt = '🕫  Vol: {}',
+                 fmt = '🕫  {}',
                  decorations=[
                      BorderDecoration(
                          colour = colors[7],
@@ -454,7 +454,7 @@ def init_widgets_list():
             backlight_name="intel_backlight",
             brightness_file="/sys/class/backlight/intel_backlight/brightness",
             max_brightness_file="/sys/class/backlight/intel_backlight/max_brightness",
-            format="☀ Bri: {percent:2.0%}",
+            format="☀ {percent:2.0%}",
             decorations=[
                 BorderDecoration(
                     colour = colors[4],
@@ -473,22 +473,11 @@ def init_widgets_list():
 #                 ],
 #                 ),
         widget.Spacer(length = 8),
-        widget.Clock(
-                 foreground = colors[8],
-                 format = "⏱  %a, %b %d - %H:%M",
-                 decorations=[
-                     BorderDecoration(
-                         colour = colors[8],
-                         border_width = [0, 0, 2, 0],
-                     )
-                 ],
-                 ),
-        widget.Spacer(length = 8),
         widget.GenPollText(
             update_interval=60,  # Interval pembaruan dalam detik
             func=lambda: calculate_average_battery(),
             foreground=colors[5],  # Warna teks
-            fmt='   Bat: {}',
+            fmt='   {}',
             decorations=[
                 BorderDecoration(
                     colour=colors[5],
@@ -496,6 +485,17 @@ def init_widgets_list():
                 )
             ],
         ),
+        widget.Spacer(length = 8),
+        widget.Clock(
+                 foreground = colors[6],
+                 format = "⏱  %a, %b %d - %H:%M",
+                 decorations=[
+                     BorderDecoration(
+                         colour = colors[6],
+                         border_width = [0, 0, 2, 0],
+                     )
+                 ],
+                 ),
         widget.Spacer(length=8),
         widget.Systray(padding = 3),
         widget.Spacer(length = 8),

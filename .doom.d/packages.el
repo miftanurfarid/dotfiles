@@ -51,4 +51,5 @@
 (package! evil-tutor)
 (package! virtualenvwrapper)
 ;; Optional: Install a package for managing transparency if needed
-(package! frame-transparency)
+;;(package! frame-transparency)
+(package! org-superstar)

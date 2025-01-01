@@ -90,3 +90,16 @@
   (conda-env-autoactivate-mode t)
   (add-hook 'find-file-hook (lambda () (when (bound-and-true-p conda-project-env-path)
                                          (conda-env-activate-for-buffer)))))
+
+(after! vterm
+  (setq vterm-shell (executable-find "fish")))
+
+(use-package! org-superstar
+  :hook (org-mode . org-superstar-mode)
+  :config
+  ;; Mengganti bullet default dengan simbol yang diinginkan
+  (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "✿"))
+  ;; Menghilangkan leading stars
+  (setq org-superstar-leading-bullet " ")
+  ;; Memastikan item tidak ditampilkan sebagai sub-bullets
+  (setq org-superstar-item-bullet-alist '((?+ . ?•) (?- . ?•))))

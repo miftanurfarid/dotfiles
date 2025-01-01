@@ -130,7 +130,8 @@ super + shift + Return
 
 #dmenu
 super + shift + d
-	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+    rofi -show drun
+    #dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
     
 #dmenu
 super + d
@@ -320,7 +321,7 @@ ctrl + shift + Escape
 
 #Scrot
 Print
-    scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+    scrot 'Screenshots-%Y-%m-%d_%H-%M-%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)'
 
 #screeenshooter
 ctrl + Print
